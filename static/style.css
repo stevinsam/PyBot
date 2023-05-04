@@ -35,13 +35,12 @@ h3 {
 }
 
 #chatbox {
-    display: flex;
     flex-flow: column wrap;
     justify-content: space-between;
     max-height: 800px;
     height: calc(100% - 50px);
     border: 2px solid #ddd;
-    background: floralwhite;
+    background: lightgrey;
     box-shadow: 0 15px 15px -5px rgba(0, 0, 0, 0.2);
     overflow-y: auto;
     padding-top: 10px;
