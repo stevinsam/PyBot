@@ -23,8 +23,6 @@ chatbot = ChatBot(name = 'PyBot', storage_adapter = "chatterbot.storage.SQLStora
 trainer = ChatterBotCorpusTrainer(chatbot)
 trainer.train("trainingData")
 
-
-
 @app.route("/")
 def home():
     return render_template("index.html")
@@ -43,5 +41,3 @@ def get_bot_response():
 if __name__ == '__main__':
     # app.debug = True
     app.run()
-
-owm_api_key = config.OWM_API
