@@ -1,0 +1,4 @@
+config.py
+backup.py
+__pycache__
+*.sqlite3

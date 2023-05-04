@@ -1,0 +1,144 @@
+html {
+    background-color: lightslategrey;
+}
+
+body {
+    font-family: Helvetica, Sans-Serif;
+    flex-flow: column wrap;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 867px;
+    margin: 20px auto;
+    height: calc(100% - 50px);
+
+}
+
+.msgHeader {
+    color: #666;
+    margin: 10px auto 0 auto;
+    text-align: center;
+    font-size: 40px;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    border: 2px solid #ddd;
+    border-radius: 5px 5px 0 0; 
+    box-shadow: 0 10px 25px 10px rgba(0, 0, 0, 0.2);
+    background: #eee;
+}
+
+h3 {
+    color: black;
+    font-size: 20px;
+    margin-top: 3px;
+    text-align: center;
+}
+
+#chatbox {
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: space-between;
+    max-height: 800px;
+    height: calc(100% - 50px);
+    border: 2px solid #ddd;
+    background: floralwhite;
+    box-shadow: 0 15px 15px -5px rgba(0, 0, 0, 0.2);
+    overflow-y: auto;
+    padding-top: 10px;
+}
+
+#chatbox::-webkit-scrollbar {
+    width: 6px;
+  }
+#chatbox::-webkit-scrollbar-track {
+    background: #ddd;
+  }
+#chatbox::-webkit-scrollbar-thumb {
+    background: #bdbdbd;
+  }
+
+#userInput {
+    display: flex;
+    padding: 10px;
+    border-top: 2px solid #ddd;
+    background: #eee;
+}
+
+#userInput * {
+    padding: 10px;
+    border: none;
+    border-radius: 3px;
+    font-size: 1em;
+}
+
+#textInput {
+    flex: 1;
+    background: #ddd;
+}
+
+#buttonInput {
+    margin-left: 10px;
+    background: rgb(0, 196, 65);
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.23s;
+
+}
+
+#buttonInput:hover {
+    background: rgb(0, 180, 50);
+  }
+
+/* input:focus {
+    outline: none;
+} */
+.userText {
+    color: white;
+    font-family: monospace;
+    font-size: 17px;
+    text-align: right;
+    line-height: 30px;
+    flex-direction: row-reverse;
+    margin: 0 5px 0 0;
+}
+
+.userText span {
+    background-color: #569EFB;
+    padding: 10px;
+    border-radius: 2px;
+    display: flex;
+    border-radius: 15px 15px 0 15px;
+    border: 2px solid black;
+    display: inline-block;
+}
+
+.botText {
+    color: black;
+    font-family: monospace;
+    font-size: 17px;
+    text-align: left;
+    line-height: 30px;
+    margin: 0 0 0 5px;
+}
+
+.botText span {
+    background-color: #EEEFEC;
+    padding: 10px;
+    border-radius: 2px;
+    display: inline-block;
+    border-radius: 15px 15px 15px 0;
+    border: 2px solid black;
+}
+
+.msgTime {
+    margin: 5px;
+    font-size: 14px;
+}
+
+#tidbit {
+    position:absolute;
+    bottom:0;
+    right:0;
+    width: 300px;
+}
