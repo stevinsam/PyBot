@@ -1,17 +1,18 @@
 from flask import Flask, render_template, request
 from chatterbot import ChatBot
+from chatterbot.response_selection import get_random_response
 from chatterbot.trainers import ChatterBotCorpusTrainer
 from timedate import get_time_and_date
 from weather import get_weather
 
 app = Flask(__name__)
 
-chatbot = ChatBot(name = 'PyBot', storage_adapter = "chatterbot.storage.SQLStorageAdapter", read_only = False, 
+chatbot = ChatBot(name = 'PyBot', response_selection_method = get_random_response, storage_adapter = "chatterbot.storage.SQLStorageAdapter", read_only = True, 
         logic_adapters = 
         [{
             'import_path': 'chatterbot.logic.BestMatch',
             'default_response': 'I am sorry, but I do not understand.',
-            'maximum_similarity_threshold': 0.65
+            'maximum_similarity_threshold': 0.8
         },
         {
             "import_path": "chatterbot.logic.MathematicalEvaluation",
