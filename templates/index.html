@@ -17,36 +17,51 @@
       </div>
       <script>
         function getBotResponse() {
+          // Get the user's input from the text input field
           var rawText = $("#textInput").val();
+          // Create HTML code to display the user's input and timestamp
           var userHtml = '<p class="userText"><span>' + rawText + '</span></p><p class="msgTime" style="text-align: right;"><span> '+ getTimeStamp() +'</span></p>';
+          // Clear the text input field
           $("#textInput").val("");
+          // Add the user's input and timestamp to the chatbox
           $("#chatbox").append(userHtml);
+          // Auto-scroll to the bottom of the chatbox
           document.getElementById("chatbox").scroll({top:document.getElementById("chatbox").scrollHeight, behavior: "smooth"})
+          // Send a GET request to the server to get the chatbot's response
           $.get("/get", { msg: rawText }).done(function(data) {
+            // Create HTML code to display the chatbot's response and timestamp
             var botHtml = '<p class="botText"><span>' + data + '</span></p><p class="msgTime" style="text-align: left;"><span> '+ getTimeStamp() +'</span></p>';
+            // Add the chatbot's response and timestamp to the chatbox
             $("#chatbox").append(botHtml);
+            // Auto-scroll to the bottom of the chatbox
             document.getElementById("chatbox").scroll({top:document.getElementById("chatbox").scrollHeight, behavior: "smooth"})
           });         
         }
+        // Listen for the "keypress" event on the text input field
         $("#textInput").keypress(function(e) {
-            if ((e.which == 13) && document.getElementById("textInput").value != "" ){
-                getBotResponse();
-            }
+          // If the user presses the "Enter" key and the input field is not empty, call the getBotResponse function
+          if ((e.which == 13) && document.getElementById("textInput").value != "" ){
+              getBotResponse();
+          }
         });
+        // Listen for the "click" event on the button input field
         $("#buttonInput").click(function() {
-            if (document.getElementById("textInput").value != "") {
-                getBotResponse();
-            }
+          // If the input field is not empty, call the getBotResponse function
+          if (document.getElementById("textInput").value != "") {
+              getBotResponse();
+          }
         })
         
 
-        
+        // Define a function to get the current timestamp
         function getTimeStamp() {
+          // Create a new Date object
           var datetime = new Date();
+          // Return the current time in "hour : minute" format
           return datetime.toLocaleTimeString("en-GB", {hour: "numeric", minute: "numeric"});
         }
-        
-        document.getElementById("firstTime").textContent = getTimeStamp()// represent on html page
+        // Set the "firstTime" element's text content to the current timestamp
+        document.getElementById("firstTime").textContent = getTimeStamp()
       </script>
     </div>
   </body>
