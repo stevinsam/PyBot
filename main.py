@@ -3,7 +3,7 @@ from chatterbot import ChatBot
 from chatterbot.trainers import ChatterBotCorpusTrainer
 from timedate import get_time_and_date
 from weather import get_weather
-
+from timezone import get_datetime
 
 app = Flask(__name__)
 
@@ -33,7 +33,7 @@ def get_bot_response():
     if "weather" in userText.lower() or "forecast" in userText.lower():
         return get_weather(userText)
     elif "time" in userText.lower() or "date" in userText.lower():
-        return get_time_and_date()
+        return get_time_and_date(userText)
     else:
         bot_response = str(chatbot.get_response(userText))
         return bot_response

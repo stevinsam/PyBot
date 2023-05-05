@@ -1,10 +1,10 @@
-import config
+from config import OWM_API
 import re
 from geopy.geocoders import Nominatim
 import requests
 import json
 # Get the OpenWeatherMap API key
-owm_api_key = config.OWM_API
+owm_api_key = OWM_API
 
 def get_weather(loc):
     try:
@@ -30,4 +30,4 @@ def get_weather(loc):
             Weather Report: {report[0]['description']}""")
     except AttributeError:   
             # showing the error message
-            return str("Sorry that location does not exist")
+            return str("Sorry, please enter a valid location")

@@ -35,8 +35,6 @@ h3 {
 }
 
 #chatbox {
-    flex-flow: column wrap;
-    justify-content: space-between;
     max-height: 800px;
     height: calc(100% - 50px);
     border: 2px solid #ddd;

@@ -12,7 +12,7 @@
         <p id="firstTime" class="msgTime"><span>00:00</span></p>
       </div>
       <div id="userInput">
-        <input id="textInput" type="text" name="msg" placeholder="Please enter a query">
+        <input id="textInput" type="text" name="msg" placeholder="Please enter a query" autofocus>
         <input id="buttonInput" type="submit" value="Send">
       </div>
       <script>
@@ -21,13 +21,12 @@
           var userHtml = '<p class="userText"><span>' + rawText + '</span></p><p class="msgTime" style="text-align: right;"><span> '+ timeStamp +'</span></p>';
           $("#textInput").val("");
           $("#chatbox").append(userHtml);
-          document.getElementById('userInput').scrollIntoView({block: 'end', behavior: 'smooth'});
+          document.getElementById("chatbox").scroll({top:document.getElementById("chatbox").scrollHeight, behavior: "smooth"})
           $.get("/get", { msg: rawText }).done(function(data) {
             var botHtml = '<p class="botText"><span>' + data + '</span></p><p class="msgTime" style="text-align: left;"><span> '+ timeStamp +'</span></p>';
             $("#chatbox").append(botHtml);
-            document.getElementById('userInput').scrollIntoView({block: 'end', behavior: 'smooth'});
-          });
-          
+            document.getElementById("chatbox").scroll({top:document.getElementById("chatbox").scrollHeight, behavior: "smooth"})
+          });         
         }
         $("#textInput").keypress(function(e) {
             if ((e.which == 13) && document.getElementById("textInput").value != "" ){
