@@ -18,12 +18,12 @@
       <script>
         function getBotResponse() {
           var rawText = $("#textInput").val();
-          var userHtml = '<p class="userText"><span>' + rawText + '</span></p><p class="msgTime" style="text-align: right;"><span> '+ timeStamp +'</span></p>';
+          var userHtml = '<p class="userText"><span>' + rawText + '</span></p><p class="msgTime" style="text-align: right;"><span> '+ getTimeStamp() +'</span></p>';
           $("#textInput").val("");
           $("#chatbox").append(userHtml);
           document.getElementById("chatbox").scroll({top:document.getElementById("chatbox").scrollHeight, behavior: "smooth"})
           $.get("/get", { msg: rawText }).done(function(data) {
-            var botHtml = '<p class="botText"><span>' + data + '</span></p><p class="msgTime" style="text-align: left;"><span> '+ timeStamp +'</span></p>';
+            var botHtml = '<p class="botText"><span>' + data + '</span></p><p class="msgTime" style="text-align: left;"><span> '+ getTimeStamp() +'</span></p>';
             $("#chatbox").append(botHtml);
             document.getElementById("chatbox").scroll({top:document.getElementById("chatbox").scrollHeight, behavior: "smooth"})
           });         
@@ -40,9 +40,13 @@
         })
         
 
-        var datetime = new Date();
-        timeStamp = datetime.toLocaleTimeString("en-GB", {hour: "numeric", minute: "numeric"});
-        document.getElementById("firstTime").textContent = timeStamp// represent on html page
+        
+        function getTimeStamp() {
+          var datetime = new Date();
+          return datetime.toLocaleTimeString("en-GB", {hour: "numeric", minute: "numeric"});
+        }
+        
+        document.getElementById("firstTime").textContent = getTimeStamp()// represent on html page
       </script>
     </div>
   </body>

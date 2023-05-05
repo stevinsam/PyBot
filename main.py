@@ -3,7 +3,6 @@ from chatterbot import ChatBot
 from chatterbot.trainers import ChatterBotCorpusTrainer
 from timedate import get_time_and_date
 from weather import get_weather
-from timezone import get_datetime
 
 app = Flask(__name__)
 
@@ -12,6 +11,7 @@ chatbot = ChatBot(name = 'PyBot', storage_adapter = "chatterbot.storage.SQLStora
         [{
             'import_path': 'chatterbot.logic.BestMatch',
             'default_response': 'I am sorry, but I do not understand.',
+            'maximum_similarity_threshold': 0.65
         },
         {
             "import_path": "chatterbot.logic.MathematicalEvaluation",
