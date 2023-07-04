@@ -54,4 +54,4 @@ def get_bot_response():
 
 # Run the app if this is the main script being executed
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True)
